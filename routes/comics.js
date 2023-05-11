@@ -7,7 +7,15 @@ router.get("/comics", async (req, res) => {
 
   const title = req.query.title || "";
   const limit = req.query.limit || 100;
-  const skip = req.query.skip || 0;
+  //   const skip = req.query.skip || 0;
+  // page
+  const page = req.query.page || 1;
+  let pageFilter = 1;
+
+  if (page) {
+    pageFilter = page;
+  }
+  const skip = (pageFilter - 1) * limit;
 
   try {
     const result = await axios.get(
