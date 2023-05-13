@@ -32,6 +32,6 @@ app.all("*", (req, res) => {
 
 /*=====================================LANCEMENT-SERVER=======================================*/
 
-app.listen(3000, () => {
-  console.log("Server has started");
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Server has started on port ${process.env.PORT}`);
 });
